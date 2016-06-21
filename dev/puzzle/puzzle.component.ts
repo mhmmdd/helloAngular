@@ -1,3 +1,18 @@
+// app.component.ts
+// import {Component} from 'angular2/core';
+// import {PuzzleComponent} from "./puzzle/puzzle.component";
+//
+// @Component({
+//   selector: 'my-app',
+//   template: `
+//         <my-puzzle></my-puzzle>
+//     `,
+//   directives : [PuzzleComponent]
+// })
+// export class AppComponent {
+//
+// }
+
 import {Component, OnInit} from 'angular2/core';
 
 @Component({
@@ -27,7 +42,8 @@ import {Component, OnInit} from 'angular2/core';
       <input type="text" #switch2 (keyup)="0"/><br/>
     </section>
     <h2 [hidden] = "switch1.value != switch1Number || switch2.value != switch2Number">Congratulations {{name.value}}, you did it!</h2>
-  `
+  `,
+  styleUrls: ['src/css/puzzle.css'],
 })
 export class PuzzleComponent implements OnInit{
   switch1Number: number;
