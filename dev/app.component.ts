@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {PropertyBindingComponent} from "./data-binding/property-binding.component";
+import {EventBindingComponent} from "./data-binding/event-binding.component";
 
 @Component({
   selector: 'my-app',
@@ -11,12 +11,14 @@ import {PropertyBindingComponent} from "./data-binding/property-binding.componen
           <br/><br/>
           <p>{{name}}</p>
           <section class="child">
-            <property-binding [myName]="name" [myAge]="26" [mySurname]="'dogan'" [myCar]="'BMW'"></property-binding>
+            <event-binding [myName]="name" [myAge]="26" [mySurname]="'dogan'" (hobbiesChanged)="hobbies=$event"></event-binding>
           </section>
+          <p>My hobbies are: {{hobbies}}</p>
         </section>
     `,
-  directives : [PropertyBindingComponent]
+  directives : [EventBindingComponent]
 })
 export class AppComponent {
   name = '';
+  hobbies = '';
 }
