@@ -1,24 +1,61 @@
+// import {Component} from 'angular2/core';
+// import {InputComponent} from "./bindings/input.component";
+// import {ConfirmComponent} from "./bindings/confirm.component";
+//
+// @Component({
+//   selector: 'my-app',
+//   template: `
+//       <div class="container">
+//         <my-input (submitted)="onSubmit($event)" [myself]="confirmedMyself"></my-input>
+//       </div>
+//       <div class="container">
+//         <my-confirm (confirmed)="onConfirm($event)" [myself]="myself"></my-confirm>
+//       </div>
+//     `,
+//   directives : [InputComponent, ConfirmComponent]
+// })
+// export class AppComponent {
+//   myself = {name: '', age: ''};
+//   confirmedMyself = {name: '', age: ''};
+//
+//   onSubmit(myself: {name: string, age: string}) {
+//     this.myself = {name: myself.name, age: myself.age};
+//     // this.myself = myself;
+//   }
+//
+//   onConfirm(myself: {name: string, age: string}) {
+//     this.confirmedMyself = {name: myself.name, age: myself.age};
+//     // this.confirmedMyself = myself;
+//   }
+// }
+
 import {Component} from 'angular2/core';
-import {EventBindingComponent} from "./data-binding/event-binding.component";
+import {InputComponent} from "./bindings/input.component";
+import {ConfirmComponent} from "./bindings/confirm.component";
 
 @Component({
   selector: 'my-app',
   template: `
-        <section class="parent">
-          <h2>This is the parent component</h2>
-          <h4>Please enter your name</h4>
-          <input type="text" [(ngModel)] ="name">
-          <br/><br/>
-          <p>{{name}}</p>
-          <section class="child">
-            <event-binding [myName]="name" [myAge]="26" [mySurname]="'dogan'" (hobbiesChanged)="hobbies=$event"></event-binding>
-          </section>
-          <p>My hobbies are: {{hobbies}}</p>
-        </section>
+      <div class="container">
+        <my-input (submitted)="onSubmit($event)" [myself]="confirmedMyself"></my-input>
+      </div>
+      <div class="container">
+        <my-confirm (confirmed)="onConfirm($event)" [myself]="myself"></my-confirm>
+      </div>
     `,
-  directives : [EventBindingComponent]
+  directives : [InputComponent, ConfirmComponent]
 })
 export class AppComponent {
-  name = '';
-  hobbies = '';
+  myself = {name: '', age: ''};
+  confirmedMyself = {name: '', age: ''};
+
+  onSubmit(myself: {name: string, age: string}) {
+    this.myself = {name: myself.name, age: myself.age};
+    // this.myself = myself;
+  }
+
+  onConfirm(myself: {name: string, age: string}) {
+    this.confirmedMyself = {name: myself.name, age: myself.age};
+    // this.confirmedMyself = myself;
+  }
 }
